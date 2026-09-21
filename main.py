@@ -1,6 +1,13 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
+
+#127.0.0.1:46764 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+#Eliminando mensagem
+@app.get("/favicon.ico")
+def favicon():
+    return {}
+    
 
 @app.get("/")
 def home():
@@ -51,7 +58,7 @@ def consultar_status_pedido(NumeroPedido: int):
         )
 	
     return {
-		"success": true,
+		"success": True,
 		"message": "Retorno Com Sucesso",
 		"data": {
 			"pedido": NumeroPedido,
