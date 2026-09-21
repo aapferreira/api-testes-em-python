@@ -44,7 +44,7 @@ def consultar_status_pedido(NumeroPedido: int):
         1003: "Em análise"
     }
     
-    if CodigoPedido not in pedidos:
+    if NumeroPedido not in pedidos:
         raise HTTPException(
             status_code=404,
             detail="Pedido não encontrado"
@@ -55,6 +55,6 @@ def consultar_status_pedido(NumeroPedido: int):
 		"message": "Retorno Com Sucesso",
 		"data": {
 			"pedido": NumeroPedido,
-			"status": pedidos[CodigoPedido]
+			"status": pedidos[NumeroPedido]
 		}
 	}
