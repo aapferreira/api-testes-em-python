@@ -37,11 +37,24 @@ def consultar_pedido():
 	
 @app.get("/api/v2/Pagamento/ConsultarStatusPedido")
 def consultar_status_pedido(NumeroPedido: int):
+	
+    pedidos = {
+        123456: "Pago Total",
+        1002: "Cancelado",
+        1003: "Em análise"
+    }
+    
+    if CodigoPedido not in pedidos:
+        raise HTTPException(
+            status_code=404,
+            detail="Pedido não encontrado"
+        )
+	
     return {
 		"success": true,
 		"message": "Retorno Com Sucesso",
 		"data": {
 			"pedido": NumeroPedido,
-			"status": "Pago Total"
+			"status": pedidos[CodigoPedido]
 		}
-	}	
+	}
