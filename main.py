@@ -25,7 +25,7 @@ def criar_usuario(usuario: dict):
     }
     
 @app.get("api/v2/Pagamento/ConsultarStatusPedido?CodigoPedido={NumeroPedido}")
-def listar_usuario():
+def consultar_pedido():
     return {
 		"success": true,
 		"message": "Retorno Com Sucesso",
@@ -34,3 +34,14 @@ def listar_usuario():
 			"status": "Pago Total"
 		}
 	}
+	
+@app.get("/api/v2/Pagamento/ConsultarStatusPedido")
+def consultar_status_pedido(NumeroPedido: int):
+    return {
+		"success": true,
+		"message": "Retorno Com Sucesso",
+		"data": {
+			"pedido": NumeroPedido,
+			"status": "Pago Total"
+		}
+	}	
