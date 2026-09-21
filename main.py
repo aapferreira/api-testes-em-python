@@ -23,3 +23,14 @@ def criar_usuario(usuario: dict):
         "mensagem": "Usuário criado com sucesso",
         "usuario": usuario
     }
+    
+@app.get("api/v2/Pagamento/ConsultarStatusPedido?CodigoPedido={NumeroPedido}")
+def listar_usuario():
+    return {
+		"success": true,
+		"message": "Retorno Com Sucesso",
+		"data": {
+			"pedido": 123456,
+			"status": "Pago Total"
+		}
+	}
