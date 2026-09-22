@@ -31,10 +31,10 @@ def criar_usuario(usuario: dict):
         "usuario": usuario
     }
     
-@app.get("api/v2/Pagamento/ConsultarStatusPedido?CodigoPedido={NumeroPedido}")
+@app.get("api/v2/Pagamento/ConsultarStatusPedido?CodigoPedido={CodigoPedido}")
 def consultar_pedido():
     return {
-		"success": true,
+		"success": True,
 		"message": "Retorno Com Sucesso",
 		"data": {
 			"pedido": 123456,
@@ -43,7 +43,7 @@ def consultar_pedido():
 	}
 	
 @app.get("/api/v2/Pagamento/ConsultarStatusPedido")
-def consultar_status_pedido(NumeroPedido: int):
+def consultar_status_pedido(CodigoPedido: int):
 	
     pedidos = {
         123456: "Pago Total",
@@ -51,7 +51,7 @@ def consultar_status_pedido(NumeroPedido: int):
         1003: "Em análise"
     }
     
-    if NumeroPedido not in pedidos:
+    if CodigoPedido not in pedidos:
         raise HTTPException(
             status_code=404,
             detail="Pedido não encontrado"
@@ -61,7 +61,7 @@ def consultar_status_pedido(NumeroPedido: int):
 		"success": True,
 		"message": "Retorno Com Sucesso",
 		"data": {
-			"pedido": NumeroPedido,
-			"status": pedidos[NumeroPedido]
+			"pedido": CodigoPedido,
+			"status": pedidos[CodigoPedido]
 		}
 	}
