@@ -44,11 +44,17 @@ def consultar_pedido():
 	
 @app.get("/api/v2/Pagamento/ConsultarStatusPedido")
 def consultar_status_pedido(CodigoPedido: int):
-	
+
     pedidos = {
         123456: "Pago Total",
-        1002: "Cancelado",
-        1003: "Em análise"
+		129805: "Pago Total",
+		129810: "Pago Total",
+		129826: "Pago Total",
+		129974: "Pago Total",
+		130000: "Pago Total",
+        1000: "Teste",
+		1001: "Cancelado",
+        1002: "Em análise"
     }
     
     if CodigoPedido not in pedidos:
