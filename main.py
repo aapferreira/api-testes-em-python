@@ -32,12 +32,12 @@ def criar_usuario(usuario: dict):
     }
     
 @app.get("api/v2/Pagamento/Callback?CodigoPedido={CodigoPedido}")
-def consultar_pedido(CodigoPedido: int):
+def consultar_pedido():
     return {
 		"success": True,
 		"message": "Retorno Com Sucesso",
 		"data": {
-			"pedido": CodigoPedido,
+			"pedido": 123456,
 			"status": "Pago Total",
 			"valorTotal": 8029.42
 		}
@@ -69,6 +69,7 @@ def consultar_status_pedido(CodigoPedido: int):
 		"message": "Retorno Com Sucesso",
 		"data": {
 			"pedido": CodigoPedido,
-			"status": pedidos[CodigoPedido]
+			"status": pedidos[CodigoPedido],
+			"valorTotal": 8029.42
 		}
 	}
