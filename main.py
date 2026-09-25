@@ -38,7 +38,7 @@ def consultar_pedido():
 		"message": "Retorno Com Sucesso",
 		"data": {
 			"pedido": 123456,
-			"status": "Pago Total"
+			"status": "Pago Total",
 			"valorTotal": 10000.00
 		}
 	}
