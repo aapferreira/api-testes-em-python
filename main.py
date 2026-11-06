@@ -73,3 +73,28 @@ def consultar_status_pedido(CodigoPedido: int):
 			"valorTotal": 8029.42
 		}
 	}
+
+@app.get("/status/pedidoSemTransacaoValida")
+def consultar_pedido():
+    return {
+		"success": True,
+		"message": "Retorno Com Sucesso",
+		"data": {
+			"pedido": 123456,
+			"status": "Consulta - Pedido sem transação válida",
+			"valorTotal": 0
+		}
+	}
+
+@app.get("/api/v2/Pagamento/Callback")
+def consultar_status_pedido(CodigoPedido: str):
+    return {
+		"success": True,
+		"message": "Retorno Com Sucesso",
+		"data": {
+			"pedido": 123456,
+			"status": CodigoPedido,
+			"valorTotal": 0
+		}
+	}
+
