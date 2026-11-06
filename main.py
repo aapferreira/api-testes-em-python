@@ -55,7 +55,8 @@ def consultar_status_pedido(CodigoPedido: int):
 		130000: "Pago Total",
         1000: "Teste",
 		1001: "Cancelado",
-        1002: "Em análise"
+        1002: "Em análise",
+        9999: "Consulta - Pedido sem transação válida"
     }
     
     if CodigoPedido not in pedidos:
@@ -73,28 +74,3 @@ def consultar_status_pedido(CodigoPedido: int):
 			"valorTotal": 8029.42
 		}
 	}
-
-@app.get("/status/pedidoSemTransacaoValida")
-def consultar_pedido():
-    return {
-		"success": True,
-		"message": "Retorno Com Sucesso",
-		"data": {
-			"pedido": 123456,
-			"status": "Consulta - Pedido sem transação válida",
-			"valorTotal": 0
-		}
-	}
-
-@app.get("/api/v2/Pagamento/Callback")
-def consultar_status_pedido(CodigoPedido: str):
-    return {
-		"success": True,
-		"message": "Retorno Com Sucesso",
-		"data": {
-			"pedido": 123456,
-			"status": CodigoPedido,
-			"valorTotal": 0
-		}
-	}
-
