@@ -31,7 +31,7 @@ def criar_usuario(usuario: dict):
         "usuario": usuario
     }
     
-@app.get("api/v2/Pagamento/Callback?CodigoPedido={CodigoPedido}")
+@app.get("api/v2/Pagamento/Callback?CodigoParceiro={CodigoParceiro}")
 def consultar_pedido():
     return {
 		"success": True,
@@ -44,7 +44,7 @@ def consultar_pedido():
 	}
 	
 @app.get("/api/v2/Pagamento/Callback")
-def consultar_status_pedido(CodigoPedido: int):
+def consultar_status_pedido(CodigoParceiro: int):
 
     pedidos = {
         123456: "Pago Total",
@@ -53,13 +53,14 @@ def consultar_status_pedido(CodigoPedido: int):
 		129826: "Pago Total",
 		129974: "Pago Total",
 		130000: "Pago Total",
-        1000: "Teste",
-		1001: "Cancelado",
-        1002: "Em análise",
-        9999: "Consulta - Pedido sem transação válida"
+        170091: "Consulta - Pedido sem transação válida",
+        100000: "Teste",
+		100001: "Cancelado",
+        100002: "Em análise",
+        999999: "Consulta - Pedido sem transação válida"
     }
     
-    if CodigoPedido not in pedidos:
+    if CodigoParceiro not in pedidos:
         raise HTTPException(
             status_code=404,
             detail="Pedido não encontrado"
@@ -69,8 +70,8 @@ def consultar_status_pedido(CodigoPedido: int):
 		"success": True,
 		"message": "Retorno Com Sucesso",
 		"data": {
-			"pedido": CodigoPedido,
-			"status": pedidos[CodigoPedido],
+			"pedido": CodigoParceiro,
+			"status": pedidos[CodigoParceiro],
 			"valorTotal": 8029.42
 		}
 	}
